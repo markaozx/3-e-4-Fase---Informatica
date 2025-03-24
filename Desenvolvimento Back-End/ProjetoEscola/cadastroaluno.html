@@ -1,0 +1,29 @@
+<head>
+    <title>Cadastro Aluno</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h2>Cadastro Aluno</h2>
+    <div style="text-align: center;">
+    <form name="form" method="post" action="cadastroaluno.php">
+        <input type="hidden" name="action" value="cadastrar">
+
+        Codigo: <br>
+        <input type="text" name="codigo" id="codigo" size="30"><br>
+        Nome: <br>
+        <input type="text" name="nome" id="nome" size="30"><br>
+        Fone: <br>
+        <input type="text" name="fone" id="fone" size="30"><br>
+        Codigo Curso: <br>
+        <input type="text" name="codcurso" id="codcurso" size="30"><br><br>
+
+        <input type="submit" value="Cadastrar" name="gravar">
+        <input type="submit" value="Alterar" name="alterar">
+        <input type="submit" value="Excluir" name="excluir">
+        <input type="submit" value="Listar" name="listar">
+    </form>
+
+    <div id="studentList" style="margin-top: 20px;"></div>
+    </div>
+</body>
+</html>
