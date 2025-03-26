@@ -3,11 +3,11 @@
 Terceira e Quarta fase do curso de informatica da satc
 
 # Materias terceira fase:
-- Desenvolvimento Back-End
+- *Desenvolvimento Back-End
 - Programação Orientada a Objetos
 - Soluções Mobile
 - Jogos Digitais
-- Projeto de vida
+- Projeto de vida*
 
 # Materias quarta fase:
 - 
