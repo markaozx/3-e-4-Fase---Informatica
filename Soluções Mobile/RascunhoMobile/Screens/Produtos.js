@@ -1,5 +1,6 @@
 import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
 import { useState } from 'react';
+import Card from './Card';
 
 export default function Produtos(){
 
@@ -29,12 +30,17 @@ export default function Produtos(){
             <FlatList
             data={produtos}
             renderItem={({item}) => (
-                <View style={styles.card}>
-                    <Image source={{uri: item.foto}} style={styles.image}/>
-                    <Text style={styles.model}>{item.nome}</Text>
-                    <Text style={styles.price}>Preço: ${item.preco}</Text>
+                <Card
+                foto = {item.foto}
+                modelo = {item.nome}
+                preco = {item.preco}
+                />
+                // <View style={styles.card}>
+                //     <Image source={{uri: item.foto}} style={styles.image}/>
+                //     <Text style={styles.model}>{item.nome}</Text>
+                //     <Text style={styles.price}>Preço: ${item.preco}</Text>
 
-                </View>
+                // </View>
             )}
             keyExtractor={item => item.id}
             />
@@ -56,28 +62,28 @@ const styles =  StyleSheet.create({
         textAlign: 'center',
         color: '#333',
     },
-    card: {
-        backgroundColor: '#fff',
-        borderRadius: 8,
-        padding: 15,
-        marginBottom: 15,
-        alignItems: 'center',
-    },
-    image: {
-        width: 300,
-        height: 180,
-        borderRadius: 8,
-        marginBottom: 10,
-    },
-    model: {
-        fontSize: 18,
-        fontWeight: '600',
-        color: '#555',
-    },
-    price: {
-        fontSize: 16,
-        color: '#888',
-        marginTop: 5,
-    }
+    // card: {
+    //     backgroundColor: '#fff',
+    //     borderRadius: 8,
+    //     padding: 15,
+    //     marginBottom: 15,
+    //     alignItems: 'center',
+    // },
+    // image: {
+    //     width: 300,
+    //     height: 180,
+    //     borderRadius: 8,
+    //     marginBottom: 10,
+    // },
+    // model: {
+    //     fontSize: 18,
+    //     fontWeight: '600',
+    //     color: '#555',
+    // },
+    // price: {
+    //     fontSize: 16,
+    //     color: '#888',
+    //     marginTop: 5,
+    // }
 })
 

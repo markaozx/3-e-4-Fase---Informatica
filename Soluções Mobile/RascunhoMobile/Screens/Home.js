@@ -1,7 +1,16 @@
-import {View, Text, Image, StyleSheet, TextInput} from 'react-native';
+import {View, Text, Image, StyleSheet, TextInput, FlatList} from 'react-native';
 import { Button, ImageBackground } from 'react-native-web';
+import { useState } from 'react';
+import Card from './Card';
 
 export default function Home() {
+
+  const [data, setData] = useState([
+      {id: 1, nome: 'LB-WORKS Ferrari F8 Tributo', preco: 50050, foto: 'https://libertywalk.co.jp/wp-content/uploads/2024/06/LB-WORKS-F8-Tributo00004-1.jpg'},
+          {id: 2, nome: 'LB-WORKS TOYOTA SUPRA (A90)', preco: 19300, foto: 'https://libertywalk.co.jp/wp-content/uploads/2025/01/SUPRA-1024x683-1.jpg'},
+          {id: 3, nome: 'LB★PERFORMANCE Lamborghini AVENTADOR', preco: 31400, foto: 'https://libertywalk.co.jp/wp-content/uploads/2023/02/PERFORMANCE-Lamborghini-AVENTADOR00005-1024x683.jpg'},
+          {id: 4, nome: 'LB-ER34 Super Silhouette SKYLINE', preco: 46730, foto: 'https://libertywalk.co.jp/wp-content/uploads/2022/10/ER34_silhouette-1024x683.jpg'},
+      ]);
   return(
     <ImageBackground source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6hKeZf7ni18SykGsxdkyYJ1X4MdlCZwbf9Q&s'}} style= {{width: '100%', height: '100%'}}>
     <View style={styles.container}>
@@ -12,12 +21,29 @@ export default function Home() {
       <Text style={styles.txt1}>"Liberty Walk" continua a espalhar a mundialmente renomada cultura de personalização "Works Style" do Japão para o mundo</Text>
       <Text style={styles.txt3}>LIBERTY WALK OFFICIAL STORE</Text>
       <View style={styles.viewimg2}>
-      <Image style={styles.img1}source={{uri: 'https://libertywalk.co.jp/wp-content/uploads/2024/07/Maiami2-1536x1024.jpg'}}/>
+      {/* <Image style={styles.img1}source={{uri: 'https://libertywalk.co.jp/wp-content/uploads/2024/07/Maiami2-1536x1024.jpg'}}/>
       <Image style={styles.img1}source={{uri: 'https://libertywalk.co.jp/wp-content/uploads/2024/07/TOKYO-STORE.jpg'}}/>
       </View>
       <View style={styles.viewimg2}>
       <Image style={styles.img1}source={{uri: 'https://libertywalk.co.jp/wp-content/uploads/2024/03/AJ2I4221ab-1536x1024.jpg '}}/>
-      <Image style={styles.img1}source={{uri: 'https://libertywalk.co.jp/wp-content/uploads/2024/07/OSAKA-2nd-STORE.jpg'}}/>
+      <Image style={styles.img1}source={{uri: 'https://libertywalk.co.jp/wp-content/uploads/2024/07/OSAKA-2nd-STORE.jpg'}}/> */}
+      <FlatList
+        data={data}
+        renderItem={({item}) => (
+            <Card
+            foto = {item.foto}
+            modelo = {item.nome}
+            preco = {item.preco}
+            />
+            // <View style={styles.card}>
+            //     <Image source={{uri: item.foto}} style={styles.image}/>
+            //     <Text style={styles.model}>{item.nome}</Text>
+            //     <Text style={styles.price}>Preço: ${item.preco}</Text>
+
+            // </View>
+        )}
+        keyExtractor={item => item.id}
+        />
       </View>
       <Text style={styles.txt}>Liberty Walk é uma marca de customização de carros, criada pelo japonês Wataru Katu.</Text>
       <Text style={styles.txt2}>A marca é conhecida por suas personalizações de carros, que incluem mudanças de estilo, performance e tecnologia.</Text>
