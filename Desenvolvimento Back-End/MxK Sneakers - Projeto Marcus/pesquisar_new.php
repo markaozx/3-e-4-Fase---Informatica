@@ -459,11 +459,6 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
                 if (mysqli_num_rows($result) > 0) {
                     echo '<div class="products-header">';
                     echo '<h2>Todos os produtos</h2>';
-                    if (!empty($_SESSION["shopping_cart"])) {
-                        echo '<form method="post" action="clear_cart.php">';
-                        echo '<button type="submit" class="clear-cart-button">Limpar Carrinho</button>';
-                        echo '</form>';
-                    }
                     echo '</div>';
                     
                     echo '<div class="products-grid">';
