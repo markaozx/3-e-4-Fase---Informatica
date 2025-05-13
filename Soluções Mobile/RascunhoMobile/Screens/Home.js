@@ -21,29 +21,12 @@ export default function Home() {
       <Text style={styles.txt1}>"Liberty Walk" continua a espalhar a mundialmente renomada cultura de personalização "Works Style" do Japão para o mundo</Text>
       <Text style={styles.txt3}>LIBERTY WALK OFFICIAL STORE</Text>
       <View style={styles.viewimg2}>
-      {/* <Image style={styles.img1}source={{uri: 'https://libertywalk.co.jp/wp-content/uploads/2024/07/Maiami2-1536x1024.jpg'}}/>
+      <Image style={styles.img1}source={{uri: 'https://libertywalk.co.jp/wp-content/uploads/2024/07/Maiami2-1536x1024.jpg'}}/>
       <Image style={styles.img1}source={{uri: 'https://libertywalk.co.jp/wp-content/uploads/2024/07/TOKYO-STORE.jpg'}}/>
       </View>
       <View style={styles.viewimg2}>
       <Image style={styles.img1}source={{uri: 'https://libertywalk.co.jp/wp-content/uploads/2024/03/AJ2I4221ab-1536x1024.jpg '}}/>
-      <Image style={styles.img1}source={{uri: 'https://libertywalk.co.jp/wp-content/uploads/2024/07/OSAKA-2nd-STORE.jpg'}}/> */}
-      <FlatList
-        data={data}
-        renderItem={({item}) => (
-            <Card
-            foto = {item.foto}
-            modelo = {item.nome}
-            preco = {item.preco}
-            />
-            // <View style={styles.card}>
-            //     <Image source={{uri: item.foto}} style={styles.image}/>
-            //     <Text style={styles.model}>{item.nome}</Text>
-            //     <Text style={styles.price}>Preço: ${item.preco}</Text>
-
-            // </View>
-        )}
-        keyExtractor={item => item.id}
-        />
+      <Image style={styles.img1}source={{uri: 'https://libertywalk.co.jp/wp-content/uploads/2024/07/OSAKA-2nd-STORE.jpg'}}/>
       </View>
       <Text style={styles.txt}>Liberty Walk é uma marca de customização de carros, criada pelo japonês Wataru Katu.</Text>
       <Text style={styles.txt2}>A marca é conhecida por suas personalizações de carros, que incluem mudanças de estilo, performance e tecnologia.</Text>

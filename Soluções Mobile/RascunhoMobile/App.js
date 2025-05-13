@@ -5,6 +5,7 @@ import Home from './Screens/Home';
 import Fale from './Screens/Fale';
 import Produtos from './Screens/Produtos';
 import Count from './Screens/Contador';
+import Cadastro from './Screens/Cadastro';
              
 import AntDesign from '@expo/vector-icons/AntDesign';
 import 'react-native-gesture-handler';
@@ -32,7 +33,8 @@ export default function Stack() {
   return ( 
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown:false}}>   
-        <Stack.Screen name="Login" component={Login} /> 
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="DrawerNavigation" component={DrawerNavigation} />
       </Stack.Navigator>
     </NavigationContainer>

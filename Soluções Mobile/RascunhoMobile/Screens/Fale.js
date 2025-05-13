@@ -1,9 +1,8 @@
 import { StyleSheet, Text, View, TextInput, Image, ImageBackground, Button} from 'react-native';
 export default function Fale(){
   return (
-    <ImageBackground style={styles.fundo} source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQlGqFrlwWVsrUYPbOiSk7RwjcA8vtUEWLtg&s'}}>
+    <ImageBackground style={styles.fundo} source={{uri: 'https://i.pinimg.com/736x/2e/96/65/2e96651aa1d65a128847b36e06b27c01.jpg'}}>
     <View style={styles.container}>
-      <Image style={styles.img} source={{uri: 'https://starplast.com.br/wp-content/uploads/2022/09/logo-kings-sneakers.png'}}/>
       <Text style={styles.titulo}>Fale Conosco:</Text>
       <View style={styles.campos}>
         <Text style={styles.text}>Nome:</Text>
@@ -41,11 +40,6 @@ const styles = StyleSheet.create({
       fontStyle: 'italic',
       fontSize: 25,
       color: 'white',
-    },
-    img: {
-      width: 100,
-      height: 100,
-      justifyContent: 'flex-start',
     },
     titulo: {
       fontFamily: 'arialbold',
