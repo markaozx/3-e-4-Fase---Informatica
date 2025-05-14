@@ -1,4 +1,4 @@
-package veiculo;
+package aula12.veiculo;
 
 class caminhao extends veiculo {
 

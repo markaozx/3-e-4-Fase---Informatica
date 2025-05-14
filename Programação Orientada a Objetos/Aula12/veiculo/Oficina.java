@@ -1,4 +1,4 @@
-package veiculo;
+package aula12.veiculo;
 
 public class Oficina {
 	

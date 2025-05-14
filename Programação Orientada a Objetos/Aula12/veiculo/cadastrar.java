@@ -1,4 +1,4 @@
-package veiculo;
+package aula12.veiculo;
 import java.util.Scanner;
 
 public class cadastrar {
