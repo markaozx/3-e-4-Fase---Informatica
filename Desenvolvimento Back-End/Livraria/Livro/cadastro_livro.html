@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Livro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="container">
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="../loja/menu.html">Menu</a></li>
+                <li><a href="../editora/cadastro_editora.html">Editoras</a></li>
+                <li><a href="../categoria/cadastro_categoria.html">Categorias</a></li>
+                <li><a href="../autor/cadastro_autor.html">Autores</a></li>
+            </ul>
+        </nav>
+        <div class="card">
+            <h1>Cadastro de Livro</h1>
+            <form method="POST" action="cadastro_livro.php" enctype="multipart/form-data" class="form-grid">
+                <div class="form-group">
+                    <label for="codigo">Código:</label>
+                    <input type="text" id="codigo" name="codigo">
+                </div>
+                <div class="form-group">
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo" name="titulo" required>
+                </div>
+                <div class="form-group">
+                    <label for="nrpaginas">Número de Páginas:</label>
+                    <input type="number" id="nrpaginas" name="nrpaginas" required>
+                </div>
+                <div class="form-group">
+                    <label for="ano">Ano:</label>
+                    <input type="number" id="ano" name="ano" required>
+                </div>
+                <div class="form-group">
+                    <label for="codautor">Código Autor:</label>
+                    <input type="number" id="codautor" name="codautor" required>
+                </div>
+                <div class="form-group">
+                    <label for="codcategoria">Código Categoria:</label>
+                    <input type="number" id="codcategoria" name="codcategoria" required>
+                </div>
+                <div class="form-group">
+                    <label for="codeditora">Código Editora:</label>
+                    <input type="number" id="codeditora" name="codeditora" required>
+                </div>
+                <div class="form-group">
+                    <label for="resenha">Resenha:</label>
+                    <textarea id="resenha" name="resenha" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="preco">Preço:</label>
+                    <input type="text" id="preco" name="preco" required>
+                </div>
+                <div class="form-group">
+                    <label for="fotocapa1">Foto Capa 1:</label>
+                    <input type="file" id="fotocapa1" name="fotocapa1" required>
+                </div>
+                <div class="form-group">
+                    <label for="fotocapa2">Foto Capa 2:</label>
+                    <input type="file" id="fotocapa2" name="fotocapa2" required>
+                </div>
+                <div class="form-group menu-grid">
+                    <button type="submit" name="gravar" class="btn">Gravar</button>
+                    <button type="submit" name="excluir" class="btn">Excluir</button>
+                    <button type="submit" name="alterar" class="btn">Alterar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
