@@ -102,20 +102,21 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
 
+    caixa: {
+        paddingTop: 20,
+        width: '100%',
+        // Removed fixed height to allow flexible input height
+    },
+
     txtinput: {
-      padding: 5,
-      height: 30,
+      // Removed padding and height to allow natural sizing
       borderColor: 'black',
       borderWidth: 1,
       borderRadius: 3,
+      backgroundColor: 'white', // Added background color for visibility
+      color: 'black',
     },
 
-    caixa: {
-        paddingTop:20,
-        width: '100%',
-        height: 50,
-    },
-    
     botao: {
         paddingTop: 50,
     },
