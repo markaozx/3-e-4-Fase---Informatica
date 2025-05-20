@@ -1,4 +1,4 @@
-import {View, Text, Image, StyleSheet, TextInput} from 'react-native';
+import {View, Text, Image, StyleSheet, TextInput,} from 'react-native';
 import { Button, ImageBackground } from 'react-native-web';
 import {useState} from 'react';
 import { auth } from '../controller.js';
@@ -13,11 +13,13 @@ export default function Login({navigation}) {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        navigation.navigate('DrawerNavigation')
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log('erro ao logar: ', error.message);
       });
   }
 
@@ -47,7 +49,7 @@ export default function Login({navigation}) {
       />
       </View>
       <View style={styles.botao}>
-      <Button title="Enviar" color='black' onPress={() => navigation.navigate('DrawerNavigation')}/>
+      <Button title="Entrar" color='black' onPress={VerificaUser}/>
       </View>
       <Text style={styles.txt}>Não tem uma conta? </Text>
       <View style={styles.botao2}>
@@ -103,18 +105,21 @@ const styles = StyleSheet.create({
     },
 
     caixa: {
-        paddingTop: 20,
+        paddingTop: 7,
         width: '100%',
         // Removed fixed height to allow flexible input height
     },
 
     txtinput: {
+      
       // Removed padding and height to allow natural sizing
       borderColor: 'black',
       borderWidth: 1,
       borderRadius: 3,
       backgroundColor: 'white', // Added background color for visibility
       color: 'black',
+      height: 30,
+      fontSize: 20,
     },
 
     botao: {
