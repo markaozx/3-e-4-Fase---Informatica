@@ -1,3 +1,5 @@
+// filho diretor
+
 package aula13.empresa;
 
 class diretor extends funcionario {

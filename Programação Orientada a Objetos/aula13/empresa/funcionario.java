@@ -1,3 +1,5 @@
+// funcionario pai
+
 package aula13.empresa;
 
 class funcionario {
