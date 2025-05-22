@@ -1,54 +1,66 @@
 import {View, Text, Image, StyleSheet, TextInput, Button, ImageBackground} from 'react-native';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../controller';
 import {useState} from 'react';
+import { db } from '../controller';
+import { collection, addDoc } from 'firebase/firestore';
 
-export default function Cadastro({navigation}) {
 
-    const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
+export default function CadastroProd() {
 
-    const RegistroUsuario = () => {
-        createUserWithEmailAndPassword(auth, email, senha)
-            .then((userCredential) => {
-                // Signed up 
-                console.log('usuario cadastrado', userCredential.user.email);
-                navigation.navigate('Login');
-                
-            })
-            .catch((error) => {
-                console.log('erro', error.message);
-              
+    const [imagem, setImagem] = useState("");
+    const [nome, setNome] = useState("");
+    const [valor, setValor] = useState("");
+
+    const CadastrarProduct = async () => {
+        try {
+            await addDoc(collection(db, 'produtos'), {
+                nome,
+                valor: parseFloat(valor),
+                imagem
             });
-
+            setNome();
+            setValor();
+            setImagem();
+        }
+        catch {
+            console.log('erro ao cadastrar', error)
+        }
     }
   return(
     <ImageBackground source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6hKeZf7ni18SykGsxdkyYJ1X4MdlCZwbf9Q&s'}} style= {{width: '100%', height: '100%'}}>
     <View style={styles.container}>
-      <Text style={styles.titulo}>Cadastro de Usuario</Text>
+      <Text style={styles.titulo}>Cadastro de Produto</Text>
       <View style={styles.caixa}>
-          <Text style={styles.txt}>Email: </Text>
+          <Text style={styles.txt}>URL da imagem: </Text>
           <TextInput
             style={styles.txtinput}
-            placeholder='email'
+            placeholder='imagem'
             placeholderTextColor={'black'}
-            value={email}
-            onChangeText={setEmail}
+            value={imagem}
+            onChangeText={setImagem}
           />
       </View>
       <View style={styles.caixa}>
-          <Text style={styles.txt}>Senha: </Text>
+          <Text style={styles.txt}>Nome: </Text>
           <TextInput
             style={styles.txtinput}
-            placeholder='senha'
+            placeholder='nome'
             placeholderTextColor={'black'}
-            value={senha}
-            onChangeText={setSenha}
-            secureTextEntry={true}
+            value={nome}
+            onChangeText={setNome}
+          />
+      </View>
+      <View style={styles.caixa}>
+          <Text style={styles.txt}>Valor: </Text>
+          <TextInput
+            style={styles.txtinput}
+            placeholder='valor'
+            placeholderTextColor={'black'}
+            value={valor}
+            onChangeText={setValor}
           />
       </View>
       <View style={styles.botao}>
-      <Button title="Cadastrar" color='black' onPress={RegistroUsuario}/>
+      <Button title="Cadastrar" color='black' onPress={CadastrarProduct}/>
       </View>
       <View style={styles.baixo}>
       <Text style={styles.credito}>Direitos autorais Liberty Walk ©

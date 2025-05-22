@@ -29,7 +29,10 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       borderColor: 'white',
       height: 30,
+      fontSize: 20,
+      color: 'white',
     },
+    
     campos: {
       width: '100%',
       paddingTop: 10,

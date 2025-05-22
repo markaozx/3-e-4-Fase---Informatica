@@ -1,11 +1,11 @@
 import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
 
-export default function Card({nome, preco, foto}){
+export default function Card({nome, valor, imagem}){
     return (
-        <View>
-            <Image source={{uri: foto}} style={styles.image}/>
+        <View style={styles.card}>
+            <Image source={{uri: imagem,}} style={styles.image}/>
             <Text style={styles.model}>{nome}</Text>
-            <Text style={styles.price}>Preço: ${preco.toFixed(2)}</Text>
+            <Text style={styles.price}>Preço: ${valor.toFixed(2)}</Text>
         </View>
     )
 }

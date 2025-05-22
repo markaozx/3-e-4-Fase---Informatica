@@ -12,7 +12,7 @@ export default function Home() {
           {id: 4, nome: 'LB-ER34 Super Silhouette SKYLINE', preco: 46730, foto: 'https://libertywalk.co.jp/wp-content/uploads/2022/10/ER34_silhouette-1024x683.jpg'},
       ]);
   return(
-    <ImageBackground source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6hKeZf7ni18SykGsxdkyYJ1X4MdlCZwbf9Q&s'}} style= {{width: '100%', height: '100%'}}>
+    <ImageBackground source={{uri: 'https://cdn.vectorstock.com/i/1000v/27/82/triangle-gradient-background-in-black-and-white-vector-8722782.jpg'}} style= {{width: '100%', height: '100%'}}>
     <View style={styles.container}>
     <View style={styles.viewimg}>
       <Image style={styles.logo1}source={require('../assets/logo.png')}/>

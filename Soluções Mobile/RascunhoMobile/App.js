@@ -6,6 +6,7 @@ import Fale from './Screens/Fale';
 import Produtos from './Screens/Produtos';
 import Count from './Screens/Contador';
 import Cadastro from './Screens/Cadastro';
+import CadastroProd from './Screens/CadastroProd'
              
 import AntDesign from '@expo/vector-icons/AntDesign';
 import 'react-native-gesture-handler';
@@ -22,6 +23,7 @@ function DrawerNavigation(){
       <drawer.Screen name='Fale Conosco' component={Fale}></drawer.Screen>
       <drawer.Screen name='Produtos' component={Produtos}></drawer.Screen>
       <drawer.Screen name='Contador' component={Count}></drawer.Screen>
+      <drawer.Screen name='Gerenc. Produto' component={CadastroProd}></drawer.Screen>
     </drawer.Navigator>
   )
 }

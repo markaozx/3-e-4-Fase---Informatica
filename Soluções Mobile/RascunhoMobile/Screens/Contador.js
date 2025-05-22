@@ -1,5 +1,7 @@
 import {View, Text, StyleSheet, Button, TouchableOpacity} from 'react-native';
 import {useState} from 'react';
+import {ImageBackground } from 'react-native-web';
+
 
 export default function Count() {
     const [count, setCount] = useState(0);
@@ -12,6 +14,7 @@ export default function Count() {
     }
 
     return (
+        <ImageBackground style={styles.fundo} source={{uri: 'https://i.pinimg.com/736x/a2/48/16/a248160d7683465d05452723bad942a7.jpg'}}>
         <View style={styles.container}>
             <Text style={styles.countText}>Contador: {count}</Text>
             <View style={styles.buttonContainer}>
@@ -23,15 +26,19 @@ export default function Count() {
                 </TouchableOpacity>
             </View>
         </View>
+        </ImageBackground>
     );
 }
 
 const styles = StyleSheet.create({
+    fundo: {
+        flex: 1,
+        justifyContent: 'center',
+    },
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f0f0f0',
     },
     countText: {
         fontSize: 32,
