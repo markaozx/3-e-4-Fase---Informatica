@@ -185,6 +185,65 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
             text-align: center;
         }
 
+        /* Banner Slider */
+        .banner-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .banner-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 200px; /* Altura padrão para telas maiores */
+            width: 100%;
+        }
+
+        .banner-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .banner-indicators {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.75rem;
+            z-index: 10;
+        }
+
+        .banner-indicators .indicator {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .banner-indicators .indicator.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+            border-color: var(--primary-color);
+        }
+
         /* Container and Layout */
         .container {
             max-width: 1400px;
@@ -503,6 +562,19 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
         }
 
         /* Responsive Design */
+        /* Media Queries para o banner */
+        @media (max-width: 1400px) {
+            .banner-slider {
+                height: 180px; /* Reduz a altura para telas médias */
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .banner-slider {
+                height: 160px; /* Mais redução de altura */
+            }
+        }
+
         @media (max-width: 1024px) {
             .container {
                 grid-template-columns: 1fr;
@@ -518,6 +590,10 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
+            }
+
+            .banner-slider {
+                height: 140px; /* Mais redução de altura para tablets grandes */
             }
         }
 
@@ -557,6 +633,10 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
             .product-content {
                 padding: 1rem;
             }
+
+            .banner-slider {
+                height: 100px; /* Altura menor para tablets */
+            }
         }
 
         @media (max-width: 480px) {
@@ -566,6 +646,10 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
 
             .filter-sidebar {
                 padding: 1rem;
+            }
+
+            .banner-slider {
+                height: 80px; /* Altura mínima para banners em mobile */
             }
         }
 
@@ -611,6 +695,36 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
             </div>
         </div>
     </header>
+    <div class="banner-container">
+        <div class="banner-slider">
+            <div class="banner-slide active">
+                <img src="../Assets/banner1.webp" alt="Banner Promocional 1">
+            </div>
+            <div class="banner-slide">
+                <img src="../Assets/banner2.png" alt="Banner Promocional 2">
+            </div>
+            <div class="banner-slide">
+                <img src="../Assets/banner3.webp" alt="Banner Promocional 3">
+            </div>
+            <div class="banner-slide">
+                <img src="../Assets/banner4.webp" alt="Banner Promocional 4">
+            </div>
+            <div class="banner-slide">
+                <img src="../Assets/banner5.webp" alt="Banner Promocional 5">
+            </div>
+            <div class="banner-slide">
+                <img src="../Assets/banner6.webp" alt="Banner Promocional 6">
+            </div>
+        </div>
+        <div class="banner-indicators">
+            <span class="indicator active" data-slide="0"></span>
+            <span class="indicator" data-slide="1"></span>
+            <span class="indicator" data-slide="2"></span>
+            <span class="indicator" data-slide="3"></span>
+            <span class="indicator" data-slide="4"></span>
+            <span class="indicator" data-slide="5"></span>
+        </div>
+    </div>
 
     <?php
     if (!empty($_SESSION["shopping_cart"])) {
@@ -638,7 +752,7 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
                         <?php
                         $query = mysqli_query($connect, "SELECT codigo, nome FROM categoria");
                         while ($categorias = mysqli_fetch_array($query)) {
-                            echo '<option value="' . $categorias['codigo'] . '">' . htmlspecialchars($categorias['nome']) . '</option>';
+                            echo '<option value="' . htmlspecialchars($categorias['codigo']) . '">' . htmlspecialchars($categorias['nome']) . '</option>';
                         }
                         ?>
                     </select>
@@ -650,7 +764,7 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
                         <?php
                         $query = mysqli_query($connect, "SELECT codigo, nome FROM autor");
                         while ($autores = mysqli_fetch_array($query)) {
-                            echo '<option value="' . $autores['codigo'] . '">' . htmlspecialchars($autores['nome']) . '</option>';
+                            echo '<option value="' . htmlspecialchars($autores['codigo']) . '">' . htmlspecialchars($autores['nome']) . '</option>';
                         }
                         ?>
                     </select>
@@ -662,7 +776,7 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
                         <?php
                         $query = mysqli_query($connect, "SELECT codigo, nome FROM editora");
                         while ($editoras = mysqli_fetch_array($query)) {
-                            echo '<option value="' . $editoras['codigo'] . '">' . htmlspecialchars($editoras['nome']) . '</option>';
+                            echo '<option value="' . htmlspecialchars($editoras['codigo']) . '">' . htmlspecialchars($editoras['nome']) . '</option>';
                         }
                         ?>
                     </select>
@@ -717,7 +831,7 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="product-card">';
                         echo '<form method="post" action="">';
-                        echo '<input type="hidden" name="codigo" value="' . $row['codigo'] . '" />';
+                        echo '<input type="hidden" name="codigo" value="' . htmlspecialchars($row['codigo']) . '" />';
                         echo '<div class="product-image">';
                         echo '<img class="first-image" src="../Livro/fotos/' . htmlspecialchars($row['fotocapa1']) . '" alt="' . htmlspecialchars($row['titulo']) . '" />';
                         echo '<img class="second-image" src="../Livro/fotos/' . htmlspecialchars($row['fotocapa2']) . '" alt="' . htmlspecialchars($row['titulo']) . '" />';
@@ -756,7 +870,7 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="product-card">';
                         echo '<form method="post" action="">';
-                        echo '<input type="hidden" name="codigo" value="' . $row['codigo'] . '" />';
+                        echo '<input type="hidden" name="codigo" value="' . htmlspecialchars($row['codigo']) . '" />';
                         echo '<div class="product-image">';
                         echo '<img class="first-image" src="../Livro/fotos/' . htmlspecialchars($row['fotocapa1']) . '" alt="' . htmlspecialchars($row['titulo']) . '" />';
                         echo '<img class="second-image" src="../Livro/fotos/' . htmlspecialchars($row['fotocapa2']) . '" alt="' . htmlspecialchars($row['titulo']) . '" />';
@@ -810,10 +924,56 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
         // Smooth scroll for better UX
         document.addEventListener('DOMContentLoaded', function() {
             const productCards = document.querySelectorAll('.product-card');
-            
+
             productCards.forEach((card, index) => {
                 card.style.animationDelay = `${index * 0.1}s`;
                 card.style.animation = 'fadeIn 0.6s ease-out both';
+            });
+
+            // Banner Slider functionality
+            const bannerSlider = document.querySelector('.banner-slider');
+            const indicatorsContainer = document.querySelector('.banner-indicators');
+            const slides = document.querySelectorAll('.banner-slide');
+            const indicators = document.querySelectorAll('.indicator');
+            let currentSlide = 0;
+            const slideInterval = 6000; // 6 seconds
+
+            function goToSlide(index) {
+                if (index < 0) {
+                    index = slides.length - 1;
+                } else if (index >= slides.length) {
+                    index = 0;
+                }
+                // Ajusta a translação baseada na largura total do bannerSlider
+                // Multiplica pela largura de um slide (que é 100% do bannerSlider)
+                bannerSlider.style.transform = `translateX(-${index * 100}%)`;
+                indicators.forEach((indicator, i) => {
+                    if (i === index) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                goToSlide(currentSlide + 1);
+            }
+
+            // Initial setup
+            goToSlide(0);
+
+            // Auto slide
+            let autoSlide = setInterval(nextSlide, slideInterval);
+
+            // Manual navigation with indicators
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    clearInterval(autoSlide); // Stop auto-slide on manual navigation
+                    goToSlide(index);
+                    autoSlide = setInterval(nextSlide, slideInterval); // Restart auto-slide
+                });
             });
         });
     </script>
