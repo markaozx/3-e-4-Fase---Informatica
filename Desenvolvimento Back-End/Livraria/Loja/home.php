@@ -14,15 +14,24 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
     $preco = $row['preco'];
     $fotocapa1 = $row['fotocapa1'];
 
-    // Cada livro é adicionado como um novo item, sem opção de quantidade
-    $cartArray = array($codigo => array('titulo' => $titulo, 'preco' => $preco, 'foto' => $fotocapa1));
-
+    // Inicializa o carrinho se ainda não existir na sessão
     if (empty($_SESSION["shopping_cart"])) {
-        $_SESSION["shopping_cart"] = $cartArray;
-        $status = "<div class='alert-success'>📚 Livro adicionado ao carrinho com sucesso!</div>";
+        $_SESSION["shopping_cart"] = array();
+    }
+
+    // Verifica se o produto JÁ ESTÁ no carrinho
+    if (array_key_exists($codigo, $_SESSION["shopping_cart"])) {
+        // Se o produto já está no carrinho, INCREMENTA a quantidade
+        $_SESSION["shopping_cart"][$codigo]['quantidade']++;
+        $status = "<div class='alert-success'>📚 Quantidade do livro atualizada no carrinho!</div>";
     } else {
-        // Sempre adiciona o livro ao carrinho, sem verificar se já existe
-        $_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"], $cartArray);
+        // Se o produto NÃO está no carrinho, adiciona-o com quantidade 1
+        $_SESSION["shopping_cart"][$codigo] = array(
+            'titulo' => $titulo,
+            'preco' => $preco,
+            'foto' => $fotocapa1,
+            'quantidade' => 1 // Define a quantidade inicial como 1
+        );
         $status = "<div class='alert-success'>📚 Livro adicionado ao carrinho com sucesso!</div>";
     }
 }
@@ -728,10 +737,18 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
 
     <?php
     if (!empty($_SESSION["shopping_cart"])) {
-        $cart_count = count(array_keys($_SESSION["shopping_cart"]));
+        $cart_count = 0;
+        foreach ($_SESSION["shopping_cart"] as $item) {
+            // Garante que 'quantidade' existe ao contar os itens no carrinho
+            if (isset($item['quantidade'])) {
+                $cart_count += $item['quantidade'];
+            } else {
+                $cart_count += 1; // Fallback para itens antigos sem 'quantidade'
+            }
+        }
     ?>
         <div class="cart_div">
-            <a href="../Carrinho/carrinho.php">
+            <a href="../Carrinho/cart.php">
                 <i class="fas fa-shopping-cart"></i>
                 Carrinho
                 <span><?php echo $cart_count; ?></span>
