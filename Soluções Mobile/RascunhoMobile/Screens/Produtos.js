@@ -4,10 +4,13 @@ import { useState, useEffect } from 'react';
 import Card from './Card';
 import { db } from '../controller';
 import { collection, doc, getDocs } from "firebase/firestore"; 
+import { useCarrinho } from '../CarrinhoProvider';
+import Carrinho from './Carrinho';
 
-export default function Produtos(){
+export default function Produtos({navigation}){
 
     const [produtos, setProdutos] = useState([]);
+    const {adicionarProduto} = useCarrinho()
 
     useEffect(() => {
         async function carregarProdutos() {
@@ -36,6 +39,10 @@ export default function Produtos(){
                     imagem = {item.imagem}
                     nome = {item.nome}
                     valor = {item.valor}
+                    comprar={()=> {
+                        adicionarProduto(item)
+                        navigation.navigate(Carrinho)
+                    }}
                     />
             )}
             keyExtractor={item => item.id}
